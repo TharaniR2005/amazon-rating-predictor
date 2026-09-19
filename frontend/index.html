@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Amazon Rating Predictor</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Amazon Rating Predictor</h1>
+
+        <p class="subtitle">
+            Enter a product review to predict its rating
+        </p>
+
+        <label for="review">Product Review</label>
+
+        <textarea
+            id="review"
+            placeholder="Type your product review here..."
+        ></textarea>
+
+        <button onclick="predictRating()">
+            Predict Rating
+        </button>
+
+        <div id="result" class="result">
+            Prediction will appear here
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

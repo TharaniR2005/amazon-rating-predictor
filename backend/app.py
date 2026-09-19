@@ -4,7 +4,10 @@ from flask_cors import CORS
 app = Flask(__name__)
 
 CORS(app)
+import joblib
 
+vectorizer = joblib.load("ml/tfidf_vectorizer.pkl")
+model = joblib.load("ml/tuned_logistic_model.pkl")
 
 @app.route("/")
 def home():
@@ -25,14 +28,14 @@ def predict():
             "error": "Please enter a review."
         }), 400
 
-    # Temporary prediction
-    # Later this will be replaced by our ML model
-    predicted_rating = 5
+    # ML model prediction
+    X = vectorizer.transform([review])
+    prediction = model.predict(X)[0]
 
     return jsonify({
-        "rating": predicted_rating
-    })
-
+        "prediction": int(prediction)
+})
 
 if __name__ == "__main__":
     app.run(debug=True)
+
